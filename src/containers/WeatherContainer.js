@@ -1,39 +1,29 @@
 import { useEffect, useState } from "react";
+import Search from "../components/Search";
 
 const WeatherContainer = () => {
 
-    const [foundLocation, setFoundLocation] = useState(null);
-    const [locationSearch, setLocationSearch] = useState(null);
+    const [weather, setWeather] = useState([]);
 
     useEffect(() => {
-        getLocation();
-    }, [locationSearch])
+        console.log("use effect triggered");
+        
+      }, []);
 
-    const getLocation = () => {
-        fetch(`/api/location/search/?query=${locationSearch}`)
+    const getWeatherByLocation = async (locationSearch) => {
+        const location = await fetch(`/api/location/search/?query=${locationSearch}`)
         .then(response => response.json())
-        .then(location => setFoundLocation(location))
-        .catch(err => console.error(err))
+        const locationId = location[0].woeid
+
+        const weather = await fetch(`/api/location/${locationId}/`)
+        .then(response => response.json())
+        setWeather(weather)
     }
-
-    const handleSearchChange = (event) => {
-        setLocationSearch(event.target.value)
-    }
-
-    const handleSearchSubmit = (event) => {
-        event.preventDefault();
-
-    }
-
-    
 
     return (
         <>
             <h1>Weather container</h1>
-            <form onSubmit={handleSearchSubmit}>
-                <input type="text" placeholder="Location" value={locationSearch} onChange={handleSearchChange}/>
-                <input type="submit" value="Search" />
-            </form>
+            <Search handleSearch={getWeatherByLocation}/>
         </>
 
     );
