@@ -25,7 +25,7 @@ const WeatherContainer = () => {
 
     return (
         <>
-            <h1>Weather container</h1>
+            <h1>Weather forecast</h1>
             <Search handleSearch={getWeatherByLocation}/>
             <WeatherList location={weather.title} weather={weather.consolidated_weather}/>
         </>
