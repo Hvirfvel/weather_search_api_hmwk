@@ -1,0 +1,28 @@
+h4 {
+    margin: 1rem 0 0.5rem 0;
+}
+
+li {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+    align-items: center;
+    justify-items: center;
+}
+
+.weather-icon {
+    width: 48px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+li:nth-child(2n+1) {
+    background-color: aliceblue;
+}
+
+.weather-state {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

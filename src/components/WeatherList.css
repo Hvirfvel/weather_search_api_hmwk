@@ -1,0 +1,15 @@
+article {
+    width: 1000px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.forecast-headings {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 10px;
+    justify-items: center;
+}

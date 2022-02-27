@@ -1,4 +1,5 @@
 import WeatherDay from "./WeatherDay";
+import './WeatherList.css'
 
 const WeatherList = ({location, weather}) => {
 
@@ -7,13 +8,19 @@ const WeatherList = ({location, weather}) => {
         }) : [];
 
     return (
-        <>
-        <h2>{location}</h2>
-
-        <ul>
-            {allWeatherDays}
-        </ul>
-        </>
+        <article>
+            <section className="forecast-headings">
+                <h2>{location}</h2>
+                <h4>Forecast</h4>
+                <h4>Max/min. temp.</h4>
+                <h4>Chance of rain</h4>
+                <h4>Wind</h4>
+                <h4>Humidity</h4>
+            </section>
+            <ul>
+                {allWeatherDays}
+            </ul>
+        </article>
     );
 }
 
