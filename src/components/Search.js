@@ -11,6 +11,7 @@ const Search = ({handleSearch}) => {
     const handleSearchSubmit = (event) => {
         event.preventDefault();
         handleSearch(locationSearch);
+        setLocationSearch("");
     }
 
     return (
