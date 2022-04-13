@@ -3,9 +3,12 @@ import './WeatherList.css'
 
 const WeatherList = ({location, weather}) => {
 
-    const allWeatherDays = weather ? weather.map((weatherDay) => {
+    if (!weather || weather.length === 0) {
+        return <h1>Waiting for weather</h1>
+    }
+    const allWeatherDays = weather.map((weatherDay) => {
             return <WeatherDay details={weatherDay} key={weatherDay.id}/>
-        }) : [];
+        })
 
     return (
         <article>

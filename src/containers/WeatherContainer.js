@@ -14,13 +14,18 @@ const WeatherContainer = () => {
       }, []);
 
     const getWeatherByLocation = async (locationSearch) => {
-        const location = await fetch(`/api/location/search/?query=${locationSearch}`)
-        .then(response => response.json())
-        const locationId = location[0].woeid
-        
-        const weather = await fetch(`/api/location/${locationId}/`)
-        .then(response => response.json())
-        setWeather(weather)
+        try {
+            const location = await fetch(`/api/location/search/?query=${locationSearch}`)
+            const locationData = await location.json()
+            const locationId = locationData[0].woeid
+            
+            const weather = await fetch(`/api/location/${locationId}/`)
+            const weatherData = await weather.json()
+            setWeather(weatherData)
+        }
+        catch(error){
+            console.error(error);
+        }
     }
 
     return (
